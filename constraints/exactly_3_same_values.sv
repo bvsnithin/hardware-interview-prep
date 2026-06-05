@@ -2,8 +2,6 @@
 Write SystemVerilog constraint for integer array of 10 elements where exactly 3 elements share the 
 same value (triplicate), and the remaining 7 elements are all different from the 
 triplicate value. 
-
-Requirements
 ******************/
 
 class packet;
