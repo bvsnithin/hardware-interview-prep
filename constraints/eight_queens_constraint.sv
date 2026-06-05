@@ -17,7 +17,7 @@ class packet;
     }
 
     //Diagonal Check
-    constraint three_rand_pos_same{
+    constraint eight_queens{
         foreach(arr[i]){
             foreach(arr[j]){
                 if(i<j){
@@ -30,7 +30,7 @@ class packet;
 
 endclass: packet
 
-module even_odd_constraint;
+module eight_queens;
 
     packet p = new();
 

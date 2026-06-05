@@ -46,7 +46,7 @@ class packet;
 
 endclass: packet
 
-module even_odd_constraint;
+module exactly_3_same_values;
 
     packet p = new();
 
