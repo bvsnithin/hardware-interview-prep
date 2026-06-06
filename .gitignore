@@ -2,3 +2,5 @@ constraints/xrun.*
 constraints/xcelium.*
 xcelium.*
 xrun.*
+.simvision
+waves.shm
