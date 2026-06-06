@@ -1,2 +1,4 @@
 constraints/xrun.*
 constraints/xcelium.*
+xcelium.*
+xrun.*;git st
