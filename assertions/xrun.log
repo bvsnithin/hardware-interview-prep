@@ -1,0 +1,56 @@
+xrun: 22.03-s012: (c) Copyright 1995-2023 Cadence Design Systems, Inc.
+TOOL:	xrun	22.03-s012: Started on Jun 04, 2026 at 23:11:28 CDT
+xrun
+	-sv
+	signal_high_when_valid.sv
+Recompiling... reason: file './signal_high_when_valid.sv' is newer than expected.
+	expected: Thu Jun  4 23:10:10 2026
+	actual:   Thu Jun  4 23:11:10 2026
+file: signal_high_when_valid.sv
+	module worklib.assertion_template:sv
+		errors: 0, warnings: 0
+	module worklib.tb_assertion:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		tb_assertion
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.assertion_template:sv <0x02d8015d>
+			streams:   5, words:  2900
+		worklib.tb_assertion:sv <0x1a5dc63d>
+			streams:   5, words: 12104
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		             Instances  Unique
+		Modules:             2       2
+		Registers:           9       9
+		Scalar wires:        4       -
+		Vectored wires:      1       -
+		Named events:        1       1
+		Always blocks:       4       4
+		Initial blocks:      3       3
+		Pseudo assignments:  3       3
+		Assertions:          1       1
+	Writing initial simulation snapshot: worklib.tb_assertion:sv
+Loading snapshot worklib.tb_assertion:sv .................... Done
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /opt/coe/cadence/XCELIUM/tools/xcelium/files/xmsimrc
+xcelium> run
+[TB] Reset released at 20
+[TB] Scenario 1 (vacuous): valid=0, data=deadbeef driven at 30
+[TB] Scenario 2 (pass): valid=1, data=1 driven at 40
+[TB] Scenario 3 (fail): valid=1, data=0 driven at 50
+xmsim: *E,ASRTST (./signal_high_when_valid.sv,17): (time 55 NS) Assertion tb_assertion.dut.p_check has failed
+Assertion failed at time 55
+[TB] Scenario 4 (fail): valid=1, data=5 driven at 60
+xmsim: *E,ASRTST (./signal_high_when_valid.sv,17): (time 65 NS) Assertion tb_assertion.dut.p_check has failed
+Assertion failed at time 65
+[TB] Simulation completed at 80
+Simulation complete via $finish(1) at time 80 NS + 0
+./signal_high_when_valid.sv:93     $finish;
+xcelium> exit
+TOOL:	xrun	22.03-s012: Exiting on Jun 04, 2026 at 23:11:28 CDT  (total: 00:00:00)
