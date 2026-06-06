@@ -28,7 +28,7 @@ class packet;
 
 endclass: packet
 
-module different_from_last_five;
+module three_sum_even;
     packet p = new();
 
     initial begin
