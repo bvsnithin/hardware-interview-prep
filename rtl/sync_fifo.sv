@@ -74,7 +74,7 @@ module fifo_tb;
     logic             empty_out;
     logic             full_out;
 
-    sync_fifo #(.WIDTH(WIDTH), .DEPTH(DEPTH)) tb(.*);
+    sync_fifo #(.WIDTH(WIDTH), .DEPTH(DEPTH)) dut(.*);
 
     initial clk = 0;
     always #5 clk = ~clk;
