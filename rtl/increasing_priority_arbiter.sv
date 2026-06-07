@@ -29,7 +29,7 @@ module arbiter_tb;
     logic [N-1:0] onehot_ouput;
     logic [$clog2(N)-1:0] grant_index;
 
-    arbiter tb(.*);
+    arbiter dut(.*);
 
     initial begin
         repeat(5) begin
