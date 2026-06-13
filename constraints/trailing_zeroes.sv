@@ -28,7 +28,7 @@ module trailing_zeroes;
     repeat(5) begin
         if(p.randomize()) begin
             $display("Generated: %b",p.data);
-            $display("Number of trailing zeroes: %d",p.num_zeroes);
+            $display("Number of trailing zeroes: %0d",p.num_zeroes);
         end
         else begin
             $display("Randomization has failed!");
