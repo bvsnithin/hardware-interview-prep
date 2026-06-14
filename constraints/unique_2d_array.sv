@@ -16,14 +16,14 @@ class packet;
 
     constraint c_arr_range{
         foreach(arr[i,j]){
-            arr[i][j] inside {[0:100]};
+            arr[i][j] inside {[0:150]};
         }
     }
 
     constraint c_unique_elements{
         foreach(arr[i,j]){
             foreach(arr[x,y]){
-                if(i!=x && j!=y) arr[i][j] != arr[x][y];
+                if(!(i==x && j==y)) arr[i][j] != arr[x][y];
             }
         }
     }
