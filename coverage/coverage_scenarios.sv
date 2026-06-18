@@ -71,3 +71,56 @@ covergroup cg_payload @(posedge clk);
         bins bin_payload_high = {8'hff};
     }
 endgroup
+
+/*********************
+AXI Write Transaction
+
+Model an AXI write channel where burst_len can be 1, 4, 8, or 16 beats, burst_type can be FIXED, INCR, or WRAP, and 
+size can be 1, 2, 4, or 8 bytes. Cover all combinations, and specifically cross burst_type with burst_len.
+*********************/
+typedef enum logic[1:0] {FIXED, INCR, WRAP} burst_type_t;
+burst_type_t burst_type;
+logic[4:0] burst_len;
+logic[3:0] size;
+
+covergroup cg_axi_write_transaction @(posedge clk);
+    cp_burst_len: coverpoint burst_len{
+        bins bin_len[] = {1,4,8,16};
+    }
+
+    cp_burst_type: coverpoint burst_type{
+        bins bin_type[] = {FIXED, INCR, WRAP} ;
+    }
+
+    cp_size: coverpoint size{
+        bins bin_size[] = {1,2,4,8};
+    }
+
+    x_burst_type_len: cross cp_burst_len, cp_burst_type;
+    x_cross_all: cross cp_burst_len, cp_burst_type, cp_size;
+
+endgroup
+
+/*********************
+Cache Controller State Machine
+
+A cache controller has states: IDLE, COMPARE_TAG, ALLOCATE, WRITE_BACK. Cover each state, and 
+cross the current state with a hit / miss signal to capture all meaningful state-outcome pairs.
+*********************/
+
+typedef enum logic[1:0] {IDLE, COMPARE_TAG, ALLOCATE, WRITE_BACK} states_t;
+states_t state;
+
+covergroup cg_cache_controller_states;
+    cp_states: coverpoint state{
+        bins bin_state[] = {IDLE, COMPARE_TAG, ALLOCATE, WRITE_BACK};
+    }
+
+    cp_hit_miss: coverpoint hit{
+        bins hit_bin = {1};
+        bins miss_bin = {0};
+    }
+    
+    x_cross_state_hit: cross cp_states, cp_hit_miss;
+
+endgroup
