@@ -38,11 +38,9 @@ class packet;
     }
 
     constraint c_queue_unique{
-        foreach(arr[i]){
-            foreach(q1[i]) q1[i] == arr[index[i]];
-            foreach(q2[i]) q2[i] == arr[index[i+q1.size()]];
-            foreach(q3[i]) q3[i] == arr[index[i+q1.size()+q2.size()]];
-        }
+        foreach(q1[i]) q1[i] == arr[index[i]];
+        foreach(q2[i]) q2[i] == arr[index[i+q1.size()]];
+        foreach(q3[i]) q3[i] == arr[index[i+q1.size()+q2.size()]];
     }
 
     
@@ -65,7 +63,7 @@ module divide_queue_elements;
             end
             $display("");
             foreach(p.q3[i]) begin
-                $write("arr[%0d]: %0d ", i, p.q3[i]);
+                $write("q3[%0d]: %0d ", i, p.q3[i]);
             end
         end
         else begin
