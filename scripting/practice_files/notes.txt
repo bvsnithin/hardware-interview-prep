@@ -1,0 +1,20 @@
+Python File Handling Practice Notes
+===================================
+
+Python provides built-in functions and modules to perform file operations. 
+Using files allows us to persist data long after our program exits.
+
+Here are some key concepts to keep in mind when handling files:
+1. Opening files: Use the built-in open() function. It requires the path and a mode.
+2. Modes:
+   - 'r' for reading (default)
+   - 'w' for writing (overwrites existing content)
+   - 'a' for appending (adds to the end of the file)
+   - 'r+' or 'w+' for both reading and writing
+3. Context managers: Always use the 'with' statement when working with files!
+   Example:
+   with open('file.txt', 'r') as file:
+       content = file.read()
+   This ensures that the file is properly closed after operations, even if an exception occurs.
+
+Always handle exceptions like FileNotFoundError or PermissionError to make your scripts robust.
