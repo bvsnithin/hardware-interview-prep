@@ -124,3 +124,34 @@ covergroup cg_cache_controller_states;
     x_cross_state_hit: cross cp_states, cp_hit_miss;
 
 endgroup
+
+
+/***************
+You have a memory transaction with:
+
+Read and write operations
+Address ranges:
+0x0000 – 0x0FFF → Boot memory
+0x1000 – 0x1FFF → User memory
+0x2000 – 0x2FFF → Peripheral memory
+How would you write a covergroup to make sure:
+
+Reads and writes are both exercised
+All three memory regions are accessed
+Every combination of operation type and memory region occurs
+***************/
+
+covergroup mem_transaction @(posedge clk);
+    cp_address_ranges: coverpoint addr{
+        bins bin_boot_memory       = {[32'h0000:32'h0fff]};
+        bins bin_user_memory       = {[32'h1000:32'h1fff]};
+        bins bin_peripheral_memory = {[32'h2000:32'h2fff]};
+    }
+
+    cp_read_write: coverpoint write{
+        bins write = {1'b1};
+        bins read = {1'b0};
+    }
+
+    x_operation_type_memory_region: cross cp_address_ranges, cp_read_write;
+endgroup

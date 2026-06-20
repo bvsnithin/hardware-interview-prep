@@ -1,0 +1,8 @@
+item_id,item_name,quantity,price,category
+101,Laptop,15,999.99,Electronics
+102,Mouse,120,25.50,Electronics
+104,Desk Chair,30,149.99,Furniture
+105,Notebook,50,2.99,Stationery
+106,Pen,200,0.99,Stationery
+108,Desk,5,249.50,Furniture
+110,Stapler,15,5.49,Stationery

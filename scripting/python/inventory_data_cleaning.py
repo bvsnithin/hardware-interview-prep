@@ -14,7 +14,18 @@ try:
          open('../practice_files/cleaned_inventory.csv','w', newline='') as new_fp:
         reader = csv.reader(fp)
         writer = csv.writer(new_fp)
-        
+        writer.writerow(next(reader))
+        total_inventory_value = 0
+        for lines in reader:
+            if(lines[2]=='' or lines[3]==''):
+                continue
+            quantity = float(lines[2])
+            price = float(lines[3])
 
+            if(price >= 0):
+                total_inventory_value = total_inventory_value + (quantity*price)
+                writer.writerow(lines)
+
+        print(f"Total Inventory value: {total_inventory_value:.2f}")
 except FileNotFoundError as e:
     print(f"Error: Could not find the file! Details: {e}")
