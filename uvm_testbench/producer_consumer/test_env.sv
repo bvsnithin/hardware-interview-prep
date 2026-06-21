@@ -16,7 +16,7 @@ class test_env extends uvm_env;
         consume = consumer::type_id::create("consumer", this);
         fifo = new("fifo", this, 1);
     endfunction: build_phase
-
+ 
     virtual function void connect_phase(uvm_phase phase);
         super.connect_phase(phase);
         prod.put_port.connect(fifo.put_export);

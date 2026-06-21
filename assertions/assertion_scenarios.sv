@@ -109,3 +109,54 @@ endproperty
 
 assert_data_stability_during_burst: assert property (data_stability_during_burst);
 assert_addr_increment_during_burst: assert property (addr_increment_during_burst);
+
+/************************************
+You have an active-low synchronous reset (rst_n). When reset is asserted, data_out must be 0 on the very next clock edge.
+************************************/
+property reset_behaviour_1;
+    @(posedge clk);
+    !rst_n |=> (data_out==0);
+endproperty
+
+assert_reset_behaviour_1: assert property (reset_behaviour_1);
+
+/************************************
+After reset is deasserted, a valid signal must not go high for at least 2 clock cycles. This is a post-reset settling requirement.
+************************************/
+property post_reset;
+    @(posedge clk);
+    $rose(rst_n) |=> !valid ##1 !valid; 
+endproperty
+
+assert_post_reset: assert property (post_reset);
+
+
+/************************************
+If req is high and rst_n is low (reset active), then ack must be deasserted within 1 clock cycle.
+************************************/
+property reset_behaviour_2;
+    @(posedge clk);
+    (req && !rst_n) |=> !ack; 
+endproperty
+
+assert_reset_behaviour_2: assert property (reset_behaviour_2);
+
+/************************************
+rst_n going low must hold for a minimum of 3 consecutive clock cycles (pulse width requirement).
+************************************/
+property reset_behaviour_3;
+    @(posedge clk);
+    $fell(rst_n)|=> !rst_n[*3]; 
+endproperty
+
+assert_reset_behaviour_3: assert property (reset_behaviour_3);
+
+/************************************
+Once reset is deasserted, a ready signal must go high within 4 clock cycles and stay high until the next reset.
+************************************/
+property reset_behaviour_4;
+    @(posedge clk);
+    $rose(rst_n) |-> ##[1:4] ready ##1 (ready until_with !rst_n); 
+endproperty
+
+assert_reset_behaviour_4: assert property (reset_behaviour_4);
