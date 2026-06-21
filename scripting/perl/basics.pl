@@ -18,11 +18,11 @@
 
 #use warnings; => This tells Perl to display warnings about suspicious code that might still run but could indicate a bug.
 
+print "Hello World!\n";
+
 my $foo;
 $foo = 8;
-print "$foo\n";
-
-print "Hello World\n";
+print "Value of foo is: $foo\n";
 
 #====Variables=====
 #Scalars start with $
@@ -38,3 +38,21 @@ push(@arr,50);             #Appends to the array. Use push(Array_Name, value);
 my $length = scalar(@arr); #This gives the array length
 print "Length of arr: $length\n";
 
+
+#==== Iterating over arrays in perl using foreach ====
+foreach my $num (@arr) {
+    print "$num\n";
+}
+
+foreach my $key (keys %hash) {
+    print "$key => $hash{$key}\n";
+}
+
+#Dictionary of student and total marks
+my %scores = ("Rachel"=>20, "Julia"=>22,"Marcus"=>19,"Asmin"=>18,"Cheng"=>15,"Jessica"=>12,"Zhoe"=>24);
+foreach my $key (keys %scores){
+    print "Student: $key, Marks: $scores{$key}\n";
+}
+
+#==== System Calls/Commands ====
+system("xrun -version"); #This will run the command "xrun -version"
