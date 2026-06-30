@@ -3,7 +3,7 @@ using namespace std;
 
 int main(){
     int x = 10;
-    int* px = &x; //px variable is local to the function main and it is in stack. So is x. It's in the stack.
+    int* px = &x; //px variable is local to the function main and it is in stack. So is x - It's in the stack.
     int* ptr = new int(32); //While ptr is in stack, new int 32 is in heap
     cout <<"Address of x, stored in pointer px: " << px <<"\n";
     cout <<"Address of 32 stored in the pointer ptr: " << ptr<<"\n";
