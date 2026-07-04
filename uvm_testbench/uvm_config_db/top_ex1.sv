@@ -1,5 +1,5 @@
 /***************
-Command - xrun -sv top_ex1.sv -top top_ex1 -uvm +UVM_CONFIG_DB_TRACE
+Command xrun -sv top_ex1.sv -uvm -access +rwc +UVM_CONFIG_DB_TRACE
 
 What's uvm_config_db?
 * Config Database as the name suggests is a database to store the configuration for uvm components. 
