@@ -35,7 +35,7 @@ class my_monitor extends uvm_monitor;
     `uvm_component_utils(my_monitor)
 
     virtual adder_if vif;
-
+    string secret;
     function new(string name = "", uvm_component parent);
         super.new(name, parent);
         `uvm_info("MON","Inside the UVM Monitor class", UVM_LOW)
@@ -47,6 +47,17 @@ class my_monitor extends uvm_monitor;
             `uvm_info("MON","-------- I can access the virtual interface --------", UVM_LOW)
         end
         else `uvm_error("MON", "-------- I cannot access the virtual interface, check the set function --------")
+        
+        if(uvm_config_db#(string)::get(this, "", "only_for_you_monitor", secret)) begin
+            `uvm_info("MON",$sformatf("-------- Test gave me this %s --------",secret), UVM_LOW)
+        end
+        else `uvm_error("MON", "-------- You are reading something you are not supposed to read --------")
+
+        if(uvm_config_db#(string)::get(this, "", "only_for_you_driver", secret)) begin
+            `uvm_info("MON",$sformatf("-------- Test gave me this %s --------",secret), UVM_LOW)
+        end
+        else `uvm_error("MON", "***** You are reading something you are not supposed to read *****")
+
     endfunction: build_phase
 
 endclass: my_monitor
@@ -58,7 +69,7 @@ class my_driver extends uvm_driver;
     `uvm_component_utils(my_driver)
 
     virtual adder_if vif;
-
+    string secret;
     function new(string name = "", uvm_component parent);
         super.new(name, parent);
         `uvm_info("DRV", "Inside the UVM Driver Constructor", UVM_LOW)
@@ -70,6 +81,17 @@ class my_driver extends uvm_driver;
             `uvm_info("DRV","-------- I can access the virtual interface --------", UVM_LOW)
         end
         else `uvm_error("DRV", "-------- I cannot access the virtual interface, check the set function --------")
+
+        if(uvm_config_db#(string)::get(this, "", "only_for_you_driver", secret)) begin
+            `uvm_info("DRV",$sformatf("-------- Test gave me this %s --------",secret), UVM_LOW)
+        end
+        else `uvm_error("DRV", "-------- You are reading something you are not supposed to read --------")
+
+        if(uvm_config_db#(string)::get(this, "", "only_for_you_monitor", secret)) begin
+            `uvm_info("DRV",$sformatf("-------- Test gave me this %s --------",secret), UVM_LOW)
+        end
+        else `uvm_error("DRV", "***** You are reading something you are not supposed to read *****")
+
     endfunction: build_phase
 
 endclass: my_driver
@@ -140,8 +162,11 @@ class my_test extends uvm_test;
         super.build_phase(phase); 
         env = my_env::type_id::create("env", this);
         uvm_config_db#(uvm_active_passive_enum)::set(this,"env.*","is_active", UVM_ACTIVE);
+        uvm_config_db#(string)::set(this,"env.agent.*","only_for_you_driver", "This is secret to driver");
+        uvm_config_db#(string)::set(this,"env.agent.*","only_for_you_monitor", "This is secret to monitor");
+        uvm_config_db#(int)::set(this,"env.agent.monitor","int_monitor", 10);
+        uvm_config_db#(int)::set(this,"env.agent.driver","driver", 20);
     endfunction: build_phase
 
 endclass: my_test
-
 

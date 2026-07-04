@@ -1,6 +1,5 @@
 /****************
-Write a code to simulate cyclic randomization behavior without using the "randc"
-keyword. 
+Write a code to simulate cyclic randomization behavior without using the "randc" keyword. 
 ****************/
 
 // 4,2,1,6,3,7,5 - 5,4,7,6,1,3,2
