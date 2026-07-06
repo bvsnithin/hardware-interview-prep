@@ -110,6 +110,16 @@ endmodule
 
 // config db key = value
 // set(context,instance_path, key, value)
-this
-null
+// this
+//  null
 // get(, key, value)
+
+
+// test
+// set(null, "*","age",20);
+// env
+// set(this, "agent.driver", "age",10);
+
+// driver
+// int age;
+// get(this,"","age", age);

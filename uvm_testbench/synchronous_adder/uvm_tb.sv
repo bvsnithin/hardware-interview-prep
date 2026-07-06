@@ -271,6 +271,7 @@ class my_agent extends uvm_agent;
 
     virtual function void connect_phase(uvm_phase phase);
         driver.seq_item_port.connect(sequencer.seq_item_export);
+        `uvm_info("AGENT","========= Connected Driver and Sequencer =========",UVM_LOW)
     endfunction: connect_phase
 
 endclass: my_agent
@@ -297,6 +298,7 @@ class my_env extends uvm_env;
 
     virtual function void connect_phase(uvm_phase phase);
         agent.monitor.ap.connect(scoreboard.analysis_imp);
+        `uvm_info("ENV","========= Connected Monitor and Scoreboard =========",UVM_LOW)
     endfunction
 
 endclass: my_env
