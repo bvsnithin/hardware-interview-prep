@@ -1,0 +1,13 @@
+This is a sample file created by the perl script perl_file_handling.pl
+Writing this content to the file
+Appending to the text file
+Writing number 1 to 10
+1
+2
+3
+4
+5
+6
+7
+8
+9

@@ -36,6 +36,7 @@ while(<$fh>){
 
 close($fh);
 
+#Read the csv file
 my $fh1;
 open($fh1,"<","../practice_files/inventory.csv") or die $!;
 
@@ -43,4 +44,37 @@ while(<$fh1>){
     print $_."\n"; 
 }
 
-close($fh1)
+close($fh1);
+
+#Read the .txt file
+my $fh2;
+open($fh2, "<", "../practice_files/notes.txt") or die $!;
+
+while(<$fh2>){
+    print $_;
+    print "\n";
+}
+
+#Write to a new file
+my $fh_w;
+#Use open with write mode ">"
+open($fh_w,">","../practice_files/perl_write_example.txt") or die $!;
+
+#Use print file_handle string/data you want to write syntax
+# print file_handle data
+print $fh_w "This is a sample file created by the perl script perl_file_handling.pl\nWriting this content to the file";
+
+close($fh_w);
+
+#Append data to the same file that we created above.
+#Let's reuse the same handle
+open($fh_w,">>","../practice_files/perl_write_example.txt") or die $!;
+
+print $fh_w "\nAppending to the text file";
+print $fh_w "\nWriting number 1 to 9";
+my @list = (1..9);
+for(@list){
+    print $fh_w "\n";
+    print $fh_w $_;
+}
+close($fh_w);

@@ -20,8 +20,8 @@ Coverage scenarios
 #### assertions - SystemVerilog Assertions
 Assertion implementations/scenarios
 
-#### python_scripting - Automation Scripts
-Python utilities for test generation, simulation automation, and data processing. Nothing here yet. :')
+#### scripting - Basics of Python and Perl 
+Nothing major here yet. :')
 
 ---
 
@@ -32,6 +32,22 @@ Python utilities for test generation, simulation automation, and data processing
 If you are from Texas A&M University, College station and have access to olympus server, execute the setup.bash script to initialize your environment:
 ```bash
 ./setup.bash
+```
+
+Note: Make sure to run the following Slurm command before executing the bashscript:
+```bash
+load-csce-616
+```
+
+If you don't want X11 forwarding (Case where you are running the terminal from vscode instead of MobaXterm on your windows), make sure to run the following command instead:
+```bash
+srun \
+  --job-name=csce-616 \
+  --cpus-per-task=1 \
+  --partition=adademic \
+  --qos=olympus-academic \
+  --pty \
+  bash -l
 ```
 
 ---

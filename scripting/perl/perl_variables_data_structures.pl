@@ -101,6 +101,12 @@ print ("\n");
 print("@list2");
 print("\n");
 
+#To print the length of the list, use the # operator
+print "Length of the list1 is: ";
+print($#list1);
+print "\n";
+
+
 #Sorting - to sort a list in ascending order just use the "sort" keyword
 #For descending order sort ue
 @sorted_names = sort @names;
