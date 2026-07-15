@@ -4,7 +4,7 @@ Task: Write a script that reads the plain text file and:
 1. Counts how many times the word "file" (case-insensitive, i.e., "file", "File", "files" etc.) appears in the text.
 2. Identifies and prints the line numbers where the word "exception" is found.
 """
-# module for re
+# module for regex
 import re
 try:
     with open('../practice_files/notes.txt', 'r') as fp:
