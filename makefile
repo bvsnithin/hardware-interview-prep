@@ -8,3 +8,4 @@ clean:
 		find . -name "$$target" -exec rm -rf {} +; \
 	done
 	@echo "Clean complete"
+	-exec clear
