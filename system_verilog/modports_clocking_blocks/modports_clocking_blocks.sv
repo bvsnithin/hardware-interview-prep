@@ -39,6 +39,20 @@ interface fifo(input logic clk);
 
         // default input #1step: Sample inputs just BEFORE the clock edge (Preponed region)
         // default output #0: Drive outputs AT the clock edge (Re-NBA region)
+
+        // #1step means the preponed region of the current positive edge of the clock cycle.
+        // That means we sample the input signals of this clocking block in the preponed region
+
+        // #0 means the RE-NBA REGION. Outputs are driven in this Re-NBA region. 
+
+        // If the input skew is 2ns; Then the inputs are sampled in the pre-poned region of the previous clock edge
+        // If current clockedge where clocking block is called is 10ns, then 2ns input skew means -> We sample the signal in the preponed region of the previous clock edge at 8ns
+
+        // #0 input skew, samples the value at the observed region
+
+        // #1step: preponed region of the current timestep
+        // #0: observed region of the current timestep
+        // #2; preponed region of the previous posedge of the clock. 
         default input #1step output #0;
         
         // Directions here are from the perspective of the Testbench!
