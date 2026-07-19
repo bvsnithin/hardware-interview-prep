@@ -7,3 +7,4 @@ waves.shm
 main
 cov_work/
 .DS_Store
+*.log
