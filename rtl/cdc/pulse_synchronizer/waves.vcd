@@ -1,0 +1,249 @@
+$date
+    Jul 25, 2026  12:58:19
+$end
+$version
+    TOOL:	xmsim	22.03-s012
+$end
+$timescale
+    1 ns
+$end
+
+$scope module test $end
+$var reg       1 !    fast_clk $end
+$var reg       1 "    fast_domain_out $end
+$var reg       1 #    data_in $end
+$var reg       1 $    rst_n $end
+$var reg       1 %    slow_clk $end
+$var reg       1 &    slow_data_in $end
+$var reg       1 '    slow_domain_out $end
+
+$scope module dut1 $end
+$var wire      1 (    fast_clk  $end
+$var wire      1 )    rst_n  $end
+$var wire      1 *    data_in  $end
+$var reg       1 +    fast_domain_out $end
+$upscope $end
+
+
+$scope module dut2 $end
+$var wire      1 ,    slow_clk  $end
+$var wire      1 )    rst_n  $end
+$var wire      1 -    slow_data_in  $end
+$var wire      1 .    slow_domain_out  $end
+$var reg       1 /    ff1 $end
+$var reg       1 0    ff2 $end
+$upscope $end
+
+$upscope $end
+
+$enddefinitions $end
+$dumpvars
+0!
+x"
+0#
+1$
+0%
+x&
+x'
+0(
+1)
+0*
+x+
+0,
+x-
+x.
+x/
+x0
+$end
+#5
+1!
+0$
+1(
+0)
+0+
+0/
+00
+0.
+0'
+0"
+0-
+#10
+0!
+0(
+#15
+1!
+1(
+#20
+0!
+0(
+#25
+1%
+1$
+1!
+1(
+1)
+1,
+#30
+0!
+0(
+#35
+1!
+1(
+#40
+0!
+0(
+#45
+1!
+1(
+1#
+1*
+#50
+0%
+0!
+0(
+0,
+#55
+1!
+1(
+0#
+1+
+0*
+1"
+1-
+#60
+0!
+0(
+#65
+1!
+1(
+0+
+0"
+0-
+#70
+0!
+0(
+#75
+1%
+1!
+1(
+1,
+#80
+0!
+0(
+#85
+1!
+1(
+#90
+0!
+0(
+#95
+1!
+1(
+#100
+0%
+0!
+0(
+0,
+#105
+1!
+1(
+#110
+0!
+0(
+#115
+1!
+1(
+#120
+0!
+0(
+#125
+1%
+1!
+1(
+1,
+#130
+0!
+0(
+#135
+1!
+1(
+#140
+0!
+0(
+#145
+1!
+1(
+#150
+0%
+0!
+0(
+0,
+#155
+1!
+1(
+#160
+0!
+0(
+#165
+1!
+1(
+#170
+0!
+0(
+#175
+1%
+1!
+1(
+1,
+#180
+0!
+0(
+#185
+1!
+1(
+#190
+0!
+0(
+#195
+1!
+1(
+#200
+0%
+0!
+0(
+0,
+#205
+1!
+1(
+#210
+0!
+0(
+#215
+1!
+1(
+#220
+0!
+0(
+#225
+1%
+1!
+1(
+1,
+#230
+0!
+0(
+#235
+1!
+1(
+#240
+0!
+0(
+#245
+1!
+1(
+#250
+0%
+0!
+0(
+0,
+#255

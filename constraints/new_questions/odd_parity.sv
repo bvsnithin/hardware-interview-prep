@@ -5,7 +5,7 @@ where the value must not repeat within the last 4 generations.
 
 class packet_odd_parity;   
     rand bit[7:0] data;
-    bit[7:0] queue[$];
+    bit[7:0] queue[$];w
 
     constraint c_odd_parity{
         ^data == 1'b1;
