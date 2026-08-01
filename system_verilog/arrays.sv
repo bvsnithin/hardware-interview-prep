@@ -22,7 +22,7 @@ module test;
             $display("Unique Values: %p", array);
         end
 
-        // Size and Delete functions
+        // Size functions
         $display("Size of ages array: %0d", ages.size());
         $display("Size of array: %0d", $size(array));
     end
@@ -38,6 +38,11 @@ module test;
             $display("%p", dynamic_array);
 
         end
+
+        // We dynamically change the size of the dynamic arrays
+        dynamic_array = new[10](dynamic_array);
+        $display("New dynamic array: %p", dynamic_array);
+        $display("Size of new dynamic array: %0d", $size(dynamic_array));
     end
 
     // Associate arrays: How to create them
@@ -50,8 +55,37 @@ module test;
     // exists(key) Returns 1 if a key is present, if not 0
     // first() 
 
+    // 1. Arrays with index int and value 1. Example data point and it's count
+    int data_count[int];
+
+    initial begin
+        $display("\n:::::::: Associative Array with key int and value int ::::::::");
+        data_count[100] = 50;
+        data_count[101] = 23;
+        data_count[200] = 27;
+        foreach(data_count[i]) begin
+            $display("Data: %0d, Count: %0d", i, data_count[i]);
+        end
+        $display("");
+    end
+
+    // 2. Arrays with index(key) int and value "array of int".
+    int pattern[int] [];
+
+    initial begin
+        $display("\n:::::::: Associative Array with key int and value an array ::::::::");
+        pattern[1] = '{1,2,3,4};
+        pattern[2] = '{10,20,30,40};
+        pattern[3] = '{3,6,9,12};
+        foreach(pattern[i]) begin
+            $display("Key: %0d, Pattern: %p", i, pattern[i]);
+        end
+        $display("");
+    end
+    
+
 
     // Queue: FIFO
     int queue[$];
-    // Queue supports many methods such as push_front() push_back() pop_front() pop_back(), delete(), and inset()
+    // Queue supports many methods such as push_front() push_back() pop_front() pop_back(), delete(), and insert()
 endmodule
