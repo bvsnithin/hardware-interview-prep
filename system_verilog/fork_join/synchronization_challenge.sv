@@ -24,7 +24,7 @@ module challenge;
         if(count == 4) begin
             $display("*****************************************");
             barrier.put(3);   // Free other cores that are blocked
-            mutex.put(1);     // Free up the lock on counte variable
+            mutex.put(1);     // Free up the lock on counter variable
         end
         else begin
             mutex.put(1);
@@ -45,3 +45,24 @@ module challenge;
         join
     end
 endmodule
+
+/*** Example flow ***/
+/*
+Consider the following simulation times for completion of phase 1 by each core
+Time: 19 | Core 1 finished Phase 1
+Time: 21 | Core 3 finished Phase 1
+Time: 38 | Core 0 finished Phase 1
+Time: 46 | Core 2 finished Phase 1
+
+When core 1 finishes the p1 first, it increments count and checks if count == 4
+Since count is only 1, it puts back the key to allow other cores increment count and wait till the barrier is open
+
+Core 3 finishes at 21 and checks count and sees it's only 2
+Core 3 waits for barrier to open
+
+Core 0 finishes next at 38 and increments count and checks if it's 4 but count is only 3
+Core 0 waits for barrier to open
+
+Core 2 arrives, increments count and now count is 4
+Hence if condition passes and now puts 3 barrier keys - allowing the waiting cores 1,3,0 to unblock and release
+*/
