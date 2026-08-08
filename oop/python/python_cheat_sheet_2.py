@@ -54,3 +54,33 @@ right_white_spaced_removed = log.rstrip()
 print(right_white_spaced_removed)
 
 
+# :::::::::::::: REPLACE and FIND :::::::::::::: Substring stuff. Syntax string.replace(old, new)
+# Remember that strings are immutable and hence the variable s will point to the old string and the output of replace or find or strip needs to be stored in another variable
+s = "sara robertson"
+new_s = s.replace("sara", "lara")
+print(new_s) # lara robertson
+
+s = "march 22nd,9:30AM,Dallas,Texas"
+new_s = s.replace(","," ")
+print(new_s) #march 22nd 9:30AM Dallas Texas
+
+# FIND: Syntax = string.find(substring) -> returns the index
+print(new_s.find("Dallas"))   #Searches left to right and returns 18(index)
+print(new_s.rfind("Dallas"))  #Searches right to left
+
+# :::::::::::::: SPLITTING STRING! ::::::::::::::
+data = "austin,dallas,chicago,houston"
+cities = data.split(",") # Creates  a list after splitting the string
+print(cities)
+print(len(cities)) # 4
+
+# We can use join to do the opposite of split
+print(":::".join(cities)) # austin:::dallas:::chicago:::houston
+
+# :::::::::::::: STARTS WITH AND ENDS WITH ::::::::::::::
+print(data.startswith("austin")) # True
+print(data.endswith("houston"))  # True
+
+# :::::::::::::: COUNT SUBSTRING ::::::::::::::
+data = "abc-fhsiufsuifbsdiuf-abc-adasdas-abc"
+print(data.count("abc")) # 3

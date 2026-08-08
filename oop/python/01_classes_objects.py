@@ -28,7 +28,7 @@ class Book:
         return f"'{self.title}' by {self.author} ({self.pages} pages)"
 
 
-# Create an object by called the ClassName
+# Create an object by calling the ClassName. Syntax object_name = ClassName(attributes initializations)
 book1 = Book("To Kill a Mockingbird", "Harper Lee", 281)
 print("Example Book 1:")
 print("Publisher Name: ", book1.publisher) # Accesses class attribute
