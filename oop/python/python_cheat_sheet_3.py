@@ -77,6 +77,93 @@ print(d["age"]) # Prints 12. To access a value we can use [] square brackets or 
 print(d.get("age",0)) # 12, second argument is 0 if the key is not present in the dictionary
 print(d.get("standard","Not listed")) # Prints Not Listed, because d only contains two keys
 
-# Updating
+# Updating Dictionary
 d["age"] = 13
 print(d["age"]) # 13
+
+# Dictionaries can also be created using comprehension
+squares = {x: x*x for x in range(10)} 
+print(squares) # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+
+# :::::::::::::::::::: SETS ::::::::::::::::::::
+# Sets are created using the set() call
+# Sets store unique values and also in a random order
+
+name_set = set()
+name_set.add("Uril")
+name_set.add("Ossbury")
+name_set.add("Adam")
+name_set.add("Adam")
+print(name_set)
+
+# Sets also supports operations like union, intersection, difference, and symmetric difference
+a = {1,2,3}
+b = {3,2,4,5}
+print(a|b) # Union - {1, 2, 3, 4, 5}
+print(a&b) # Intersection - {2,3}
+print(a-b) # Difference - {1}
+print(a^b) # Symmetric Difference - {1,4,5}
+
+# :::::::::::::::::::: TUPLES ::::::::::::::::::::
+# Tuples are ordered, and they are also immutable just like strings
+# Tuples are created using round brackets
+t = ()
+t = (1,2,3)
+print(t[1]) # They are accessed just like the lists
+
+# :::::::::::::::::::: COLLECTIONS ::::::::::::::::::::
+# Apart from the 4 general purpose data structures (lists, dicts, sets, and tuples), python also has a collections module
+from collections import *
+
+# Collections module provide container dataypes and they are as follows
+# 1. Counter - A dictionary subclass designed specifically for counting items.
+# 2. defaultdict - A dictionary subclass that calls a factory function to supply missing values.
+# 3. deque (Double Ended Queues) - A list-like sequence optimizing fast appends and pops from both ends.
+# 4. namedtuple - A factory function to create tuple subclasses with named fields.
+# 5. OrderedDict - A dictionary subclass that remembers the exact order keys were added.
+# 6. ChainMap - Links multiple dictionaries together into a single, combined view.
+
+import heapq
+# A priority queue/min heap in python. Always keeps smallest element at index 0! 
+
+heap = []
+heapq.heappush(heap, 5)
+heapq.heappush(heap, 50)
+heapq.heappush(heap, 25)
+heapq.heappush(heap, -5)
+
+print(heap) # [-5, 5, 25, 50] 
+print(heapq.heappop(heap)) # Returns the smallest number always = -5
+print(heap) # [5, 25, 50] 
+
+numbers_list = [12,3,0,-3,58,9,33,-29,100]
+heapq.heapify(numbers_list) # This transforms numbers_list in place to a heap
+print(numbers_list) # [-29, -3, 0, 3, 58, 9, 33, 12, 100]
+
+# :::::::::::::::::::: RANDOMIZATION ::::::::::::::::::::
+import random
+
+# Generating random numbers
+x = random.random()
+print(x) # 0.6657940711940955
+x = random.randint(0,3)
+print(x) # A random integer from 0 to 3
+
+# :::::::::::::::::::: LIST ITERATION ::::::::::::::::::::
+list_1 = [x for x in range(1,10) if x%3 == 0]
+
+# Naive way of doing the iteration
+for i in range(len(list_1)):
+    print(str(list_1[i]) + " ", end = "")
+
+print()
+
+# Direct Loop
+for x in list_1:
+    print(x, end = "")
+    print(" ", end = "")
+print()
+
+# Enumerate with index
+for i, x in enumerate(list_1):
+    print(f"Index i = {i}, Num x = {x}")
