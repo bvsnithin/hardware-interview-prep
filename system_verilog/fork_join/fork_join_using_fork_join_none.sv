@@ -24,7 +24,7 @@ module test;
             begin: process_c
                 int random_delay = $urandom_range(10,20);
                 #(random_delay);
-                $display("TIME = %0t: Process A is completed", $time);
+                $display("TIME = %0t: Process C is completed", $time);
             end
         join_none
         wait fork;
