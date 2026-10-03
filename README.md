@@ -1,5 +1,9 @@
 # Hardware Interview Prep
 
+🌐 **Live site →** [bvsnithin.github.io/hardware-interview-prep](https://bvsnithin.github.io/hardware-interview-prep/)
+
+> Question tracker with code viewer, progress tracking, and company tags.
+
 This is a comprehensive repository of RTL design, SystemVerilog constraints, coverage models, and interview preparation materials for hardware design verification and RTL engineering roles.
 
 ## My 2 Cents on Preparing for Interviews

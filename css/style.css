@@ -41,10 +41,22 @@
   --accent-amber: #f59e0b;
   --accent-purple: #a855f7;
 
+  --hero-title-from: #ffffff;
+  --hero-title-to: #94a3b8;
+
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-dim: #475569;
+
+  --badge-freq: #fbbf24;
+  --badge-freq-bg: rgba(245, 158, 11, 0.15);
+  --badge-freq-border: rgba(245, 158, 11, 0.3);
+
+  --tag-intel-color: #38bdf8;
+  --tag-nvidia-color: #84cc16;
+  --tag-qualcomm-color: #c084fc;
+  --tag-upcoming-color: #c084fc;
 
   --code-bg: #090c12;
   --code-header-bg: rgba(255, 255, 255, 0.03);
@@ -69,7 +81,7 @@
 /* ═══════════════════════════════════════
    DESIGN TOKENS — LIGHT MODE
 ═══════════════════════════════════════ */
-[data-theme="light"] {
+html[data-theme="light"] {
   --bg-base: #f0f4fa;
   --bg-gradient: radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
                  radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
@@ -96,10 +108,22 @@
   --cat-header-bg: rgba(0, 0, 0, 0.025);
   --cat-header-hover: rgba(0, 0, 0, 0.045);
 
+  --hero-title-from: #0f172a;
+  --hero-title-to: #334155;
+
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  --text-dim: #cbd5e1;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+
+  --badge-freq: #d97706;
+  --badge-freq-bg: rgba(245, 158, 11, 0.12);
+  --badge-freq-border: rgba(245, 158, 11, 0.35);
+
+  --tag-intel-color: #0284c7;
+  --tag-nvidia-color: #4d7c0f;
+  --tag-qualcomm-color: #7e22ce;
+  --tag-upcoming-color: #7e22ce;
 
   --code-bg: #1e2432;
   --code-header-bg: rgba(0, 0, 0, 0.08);
@@ -114,8 +138,8 @@
 }
 
 /* Light mode: override Prism code colour to stay dark */
-[data-theme="light"] .code-wrapper pre,
-[data-theme="light"] .code-wrapper code {
+html[data-theme="light"] .code-wrapper pre,
+html[data-theme="light"] .code-wrapper code {
   color: #cdd9e5;
 }
 
@@ -275,7 +299,7 @@ body {
 
 .nav-tab-btn.upcoming .nav-tab-badge {
   background: rgba(168, 85, 247, 0.15);
-  color: #c084fc;
+  color: var(--tag-upcoming-color);
   border-color: rgba(168, 85, 247, 0.25);
 }
 
@@ -321,7 +345,7 @@ body {
   font-weight: 700;
   letter-spacing: -0.03em;
   margin-bottom: 6px;
-  background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+  background: linear-gradient(135deg, var(--hero-title-from) 40%, var(--hero-title-to) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -334,8 +358,8 @@ body {
 
 .progress-summary {
   min-width: 280px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   padding: 16px 20px;
 }
@@ -363,7 +387,7 @@ body {
 
 .progress-bar-track {
   height: 8px;
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--row-border);
   border-radius: var(--radius-pill);
   overflow: hidden;
   position: relative;
@@ -388,7 +412,7 @@ body {
 }
 
 .progress-substats .freq-stat {
-  color: #fbbf24;
+  color: var(--badge-freq);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -512,9 +536,9 @@ body {
 }
 
 .filter-pill.frequent-pill.active {
-  background: rgba(245, 158, 11, 0.15);
-  border-color: rgba(245, 158, 11, 0.35);
-  color: #fbbf24;
+  background: var(--badge-freq-bg);
+  border-color: var(--badge-freq-border);
+  color: var(--badge-freq);
 }
 
 .filter-actions {
@@ -537,7 +561,7 @@ body {
 }
 
 .toggle-all-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg-hover);
   color: var(--text-primary);
 }
 
@@ -758,27 +782,27 @@ body {
 }
 
 .tag-freq {
-  background: rgba(245, 158, 11, 0.15);
-  color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: var(--badge-freq-bg);
+  color: var(--badge-freq);
+  border: 1px solid var(--badge-freq-border);
   box-shadow: 0 0 8px rgba(245, 158, 11, 0.1);
 }
 
 .tag-intel {
   background: rgba(56, 189, 248, 0.12);
-  color: #38bdf8;
+  color: var(--tag-intel-color);
   border: 1px solid rgba(56, 189, 248, 0.28);
 }
 
 .tag-nvidia {
   background: rgba(118, 185, 0, 0.12);
-  color: #84cc16;
+  color: var(--tag-nvidia-color);
   border: 1px solid rgba(118, 185, 0, 0.28);
 }
 
 .tag-apple {
   background: rgba(168, 85, 247, 0.12);
-  color: #c084fc;
+  color: var(--tag-qualcomm-color);
   border: 1px solid rgba(168, 85, 247, 0.28);
 }
 
@@ -1104,16 +1128,16 @@ body {
 
 .modal-footer {
   padding: 14px 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--glass-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--modal-footer-bg);
 }
 
 .modal-nav-btn {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-secondary);
   font-family: var(--font-display);
   font-size: 0.82rem;
@@ -1127,7 +1151,7 @@ body {
 }
 
 .modal-nav-btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg-hover);
   color: var(--text-primary);
 }
 
@@ -1269,39 +1293,4 @@ body {
   transform: rotate(18deg) scale(1.08);
 }
 
-/* ═══════════════════════════════════════
-   MODAL FOOTER WITH TOKENS
-═══════════════════════════════════════ */
-.modal-footer {
-  padding: 14px 24px;
-  border-top: 1px solid var(--glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--modal-footer-bg);
-}
 
-.modal-nav-btn {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  color: var(--text-secondary);
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all var(--transition-fast);
-}
-
-.modal-nav-btn:hover:not(:disabled) {
-  background: var(--glass-bg-hover);
-  color: var(--text-primary);
-}
-
-.modal-nav-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
