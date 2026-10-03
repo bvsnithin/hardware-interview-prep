@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware Interview Prep</title>
+  <meta name="description" content="A curated NeetCode-style practice platform for hardware verification, SystemVerilog constraints, RTL design, and interview questions.">
+
+  <!-- Google Fonts: Funnel Display & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Prism.js Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><rect x='4' y='4' width='16' height='16' rx='3'/><rect x='9' y='9' width='6' height='6' fill='%230a0d14'/><path d='M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round'/></svg>">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Navigation -->
+    <header class="top-nav">
+      <div class="nav-content">
+        <a href="#" class="brand">
+          <div>
+            <span class="brand-title">Hardware Interview Prep</span>
+          </div>
+        </a>
+
+        <!-- Center Top-Level Tabs -->
+        <nav class="nav-tabs" id="topNavTabs">
+          <button id="navCodingTab" class="nav-tab-btn active" data-view="coding">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            Coding List
+            <span class="nav-tab-badge" id="codingBadge">89</span>
+          </button>
+          <button id="navBankTab" class="nav-tab-btn upcoming" data-view="bank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            Question Bank
+            <span class="nav-tab-badge">Coming Soon</span>
+          </button>
+        </nav>
+
+        <!-- Right Actions -->
+        <div class="nav-actions">
+          <!-- Theme Toggle -->
+          <button id="themeToggle" class="theme-toggle-btn" title="Toggle light/dark mode" aria-label="Toggle theme">
+            <!-- Moon icon (shown in dark mode) -->
+            <svg id="iconDark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- Sun icon (shown in light mode) -->
+            <svg id="iconLight" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <a href="https://github.com/bvsnithin/hardware-interview-prep" target="_blank" rel="noopener noreferrer" class="github-btn" title="View GitHub Repository">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========== CODING LIST VIEW ========== -->
+    <main id="codingView">
+
+      <!-- Hero / Progress Section -->
+      <section class="hero-card glass-panel">
+        <div class="hero-title-group">
+          <h1 id="heroTitle">SV Constraints</h1>
+          <p class="hero-subtitle" id="heroSubtitle">
+            Practice real-world constraint programming questions, Intel/NVIDIA interview scenarios, and puzzle solvers. Mark questions complete as you solve them.
+          </p>
+        </div>
+
+        <div class="progress-summary">
+          <div class="progress-header">
+            <span class="progress-label">Your Progress</span>
+            <span class="progress-ratio" id="progressRatio">0 / 0 (0%)</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+          </div>
+          <div class="progress-substats">
+            <span class="freq-stat" id="freqProgressStat">0 / 0 Frequently Asked Solved</span>
+            <button id="resetBtn" class="reset-btn" title="Reset your completion tracking">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Sub-Tabs (Constraints | Fork-Join) -->
+      <div class="section-tabs">
+        <button id="sectionConstraints" class="section-tab-btn active" data-section="constraints">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          SV Constraints
+          <span class="section-tab-count" id="constraintsCount">75</span>
+        </button>
+        <button id="sectionForkJoin" class="section-tab-btn" data-section="forkjoin">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          Fork-Join Concurrency
+          <span class="section-tab-count" id="forkjoinCount">14</span>
+        </button>
+      </div>
+
+      <!-- Filter / Search Bar -->
+      <section class="filter-bar">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search questions, concepts, or companies..." />
+          <button id="searchClear" class="search-clear" title="Clear search">✕</button>
+        </div>
+
+        <div class="filter-pills">
+          <button class="filter-pill active" data-filter="all">
+            All <span class="pill-count">0</span>
+          </button>
+          <button class="filter-pill frequent-pill" data-filter="frequent">
+            ★ Frequently Asked <span class="pill-count">0</span>
+          </button>
+          <button class="filter-pill" data-filter="todo">
+            To Do <span class="pill-count">0</span>
+          </button>
+          <button class="filter-pill" data-filter="completed">
+            Completed <span class="pill-count">0</span>
+          </button>
+        </div>
+
+        <div class="filter-actions">
+          <button id="toggleAllBtn" class="toggle-all-btn">Collapse All</button>
+        </div>
+      </section>
+
+      <!-- Questions List -->
+      <div id="questionsList"></div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state glass-panel" style="display: none;">
+        <div class="empty-state-icon">🔍</div>
+        <h3>No questions found</h3>
+        <p>Try adjusting your search query or switching the filter pills.</p>
+      </div>
+    </main>
+
+    <!-- ========== QUESTION BANK VIEW ========== -->
+    <section id="bankView" class="placeholder-view">
+      <div class="glass-panel" style="padding: 32px;">
+        <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 8px;">Question Bank (Coming Soon)</h2>
+        <p style="color: var(--text-secondary); max-width: 680px; line-height: 1.6;">
+          This section will host comprehensive conceptual interview questions and in-depth explanations organized by folder. Review verification concepts, protocol rules, and hardware design interview topics.
+        </p>
+        <div class="bank-grid">
+          <div class="bank-card glass-panel">
+            <div class="bank-card-icon" style="color: #38bdf8;">⚡</div>
+            <h3 class="bank-card-title">Assertions (SVA)</h3>
+            <p class="bank-card-desc">SPI protocol checks, FIFO overflow/underflow assertions, handshake timing, and concurrent properties.</p>
+            <span class="bank-badge">Folder: /assertions</span>
+          </div>
+          <div class="bank-card glass-panel">
+            <div class="bank-card-icon" style="color: #10b981;">🏛️</div>
+            <h3 class="bank-card-title">UVM Architecture</h3>
+            <p class="bank-card-desc">Config DB mechanisms, phase objections, analysis ports/FIFOs, factory overrides, and out-of-order scoreboards.</p>
+            <span class="bank-badge">Folder: /uvm_testbench</span>
+          </div>
+          <div class="bank-card glass-panel">
+            <div class="bank-card-icon" style="color: #a855f7;">🔄</div>
+            <h3 class="bank-card-title">SystemVerilog Core</h3>
+            <p class="bank-card-desc">Stratified event scheduler, active vs NBA vs observed regions, mailboxes, semaphore synchronization, and OOP patterns.</p>
+            <span class="bank-badge">Folder: /system_verilog</span>
+          </div>
+          <div class="bank-card glass-panel">
+            <div class="bank-card-icon" style="color: #f59e0b;">⚙️</div>
+            <h3 class="bank-card-title">RTL & Digital Design</h3>
+            <p class="bank-card-desc">Clock Domain Crossing (CDC), gray code pointers, round-robin arbiters, clock dividers, and synchronous FIFOs.</p>
+            <span class="bank-badge">Folder: /rtl</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- ========== CODE MODAL ========== -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <h3 id="modalTitle" class="modal-title">Question Title</h3>
+        </div>
+        <div class="modal-header-actions">
+          <a id="modalGithubLink" href="#" target="_blank" rel="noopener noreferrer" class="github-btn" title="View raw file on GitHub">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            GitHub
+          </a>
+          <button id="modalCloseBtn" class="modal-close-btn" title="Close (Esc)">✕</button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-meta-row">
+          <div id="modalTags" class="modal-tags"></div>
+          <label class="modal-complete-toggle">
+            <input type="checkbox" id="modalCompleteCheckbox" style="accent-color: #10b981; width: 16px; height: 16px; cursor: pointer;">
+            <span>Completed</span>
+          </label>
+        </div>
+
+        <div class="modal-desc-card">
+          <h4>Problem & Scenario</h4>
+          <p id="modalDescText" class="modal-desc-text"></p>
+        </div>
+
+        <div class="code-wrapper">
+          <div class="code-header">
+            <span id="modalFilename" class="code-filename">...</span>
+            <div class="code-actions">
+              <button id="copyCodeBtn" class="copy-btn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy Code
+              </button>
+            </div>
+          </div>
+          <pre><code id="modalCode" class="language-verilog"></code></pre>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="modalPrevBtn" class="modal-nav-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          Previous
+        </button>
+        <button id="modalNextBtn" class="modal-nav-btn">
+          Next
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-verilog.min.js"></script>
+  <script src="js/questions-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
