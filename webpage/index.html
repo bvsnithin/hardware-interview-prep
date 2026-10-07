@@ -181,28 +181,44 @@
         </p>
         <div class="bank-grid">
           <div class="bank-card glass-panel">
-            <div class="bank-card-icon" style="color: #38bdf8;">⚡</div>
-            <h3 class="bank-card-title">Assertions (SVA)</h3>
-            <p class="bank-card-desc">SPI protocol checks, FIFO overflow/underflow assertions, handshake timing, and concurrent properties.</p>
-            <span class="bank-badge">Folder: /assertions</span>
+            <div class="bank-card-img-wrap">
+              <img src="images/assertion_image.png" alt="Assertions (SVA)" class="bank-card-img" />
+            </div>
+            <div class="bank-card-body">
+              <h3 class="bank-card-title">Assertions (SVA)</h3>
+              <p class="bank-card-desc">SPI protocol checks, FIFO overflow/underflow assertions, handshake timing, and concurrent properties.</p>
+              <span class="bank-badge">Folder: /assertions</span>
+            </div>
           </div>
           <div class="bank-card glass-panel">
-            <div class="bank-card-icon" style="color: #10b981;">🏛️</div>
-            <h3 class="bank-card-title">UVM Architecture</h3>
-            <p class="bank-card-desc">Config DB mechanisms, phase objections, analysis ports/FIFOs, factory overrides, and out-of-order scoreboards.</p>
-            <span class="bank-badge">Folder: /uvm_testbench</span>
+            <div class="bank-card-img-wrap">
+              <img src="images/uvm_image.png" alt="UVM Architecture" class="bank-card-img" />
+            </div>
+            <div class="bank-card-body">
+              <h3 class="bank-card-title">UVM Architecture</h3>
+              <p class="bank-card-desc">Config DB mechanisms, phase objections, analysis ports/FIFOs, factory overrides, and out-of-order scoreboards.</p>
+              <span class="bank-badge">Folder: /uvm_testbench</span>
+            </div>
           </div>
           <div class="bank-card glass-panel">
-            <div class="bank-card-icon" style="color: #a855f7;">🔄</div>
-            <h3 class="bank-card-title">SystemVerilog Core</h3>
-            <p class="bank-card-desc">Stratified event scheduler, active vs NBA vs observed regions, mailboxes, semaphore synchronization, and OOP patterns.</p>
-            <span class="bank-badge">Folder: /system_verilog</span>
+            <div class="bank-card-img-wrap">
+              <img src="images/comp_arch_image.jpeg" alt="SystemVerilog Core & Architecture" class="bank-card-img" />
+            </div>
+            <div class="bank-card-body">
+              <h3 class="bank-card-title">SystemVerilog Core & Architecture</h3>
+              <p class="bank-card-desc">Stratified event scheduler, active vs NBA vs observed regions, mailboxes, semaphore synchronization, and OOP patterns.</p>
+              <span class="bank-badge">Folder: /system_verilog</span>
+            </div>
           </div>
           <div class="bank-card glass-panel">
-            <div class="bank-card-icon" style="color: #f59e0b;">⚙️</div>
-            <h3 class="bank-card-title">RTL & Digital Design</h3>
-            <p class="bank-card-desc">Clock Domain Crossing (CDC), gray code pointers, round-robin arbiters, clock dividers, and synchronous FIFOs.</p>
-            <span class="bank-badge">Folder: /rtl</span>
+            <div class="bank-card-img-wrap">
+              <img src="images/rtl_design_image.jpeg" alt="RTL & Digital Design" class="bank-card-img" />
+            </div>
+            <div class="bank-card-body">
+              <h3 class="bank-card-title">RTL & Digital Design</h3>
+              <p class="bank-card-desc">Clock Domain Crossing (CDC), gray code pointers, round-robin arbiters, clock dividers, and synchronous FIFOs.</p>
+              <span class="bank-badge">Folder: /rtl</span>
+            </div>
           </div>
         </div>
       </div>
@@ -244,7 +260,17 @@
           <p id="modalDescText" class="modal-desc-text"></p>
         </div>
 
-        <div class="code-wrapper">
+        <div class="code-toggle-bar">
+          <button id="toggleCodeBtn" class="toggle-code-btn" type="button">
+            <svg id="toggleCodeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span id="toggleCodeText">Show Code Solution</span>
+          </button>
+        </div>
+
+        <div id="codeWrapper" class="code-wrapper hidden">
           <div class="code-header">
             <span id="modalFilename" class="code-filename">...</span>
             <div class="code-actions">

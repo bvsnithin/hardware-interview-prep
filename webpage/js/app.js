@@ -102,6 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyCodeBtn        = document.getElementById('copyCodeBtn');
   const modalPrevBtn       = document.getElementById('modalPrevBtn');
   const modalNextBtn       = document.getElementById('modalNextBtn');
+  const toggleCodeBtn      = document.getElementById('toggleCodeBtn');
+  const toggleCodeText     = document.getElementById('toggleCodeText');
+  const toggleCodeIcon     = document.getElementById('toggleCodeIcon');
+  const codeWrapper        = document.getElementById('codeWrapper');
 
   // ─── Helper: active question pool ────────────────────────────────────────────
   function activePool() {
@@ -334,7 +338,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalCode.textContent = q.code;
     modalCode.className   = 'language-verilog';
-    if (window.Prism) Prism.highlightElement(modalCode);
+
+    // Default code wrapper to hidden
+    resetCodeToggleState();
 
     const idx = filteredQuestions.findIndex(item => item.id === id);
     modalPrevBtn.disabled = idx <= 0;
@@ -344,6 +350,35 @@ document.addEventListener('DOMContentLoaded', () => {
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     window.location.hash = `q=${id}`;
+  }
+
+  function resetCodeToggleState() {
+    if (!codeWrapper || !toggleCodeBtn) return;
+    codeWrapper.classList.add('hidden');
+    toggleCodeBtn.classList.remove('active');
+    if (toggleCodeText) toggleCodeText.textContent = 'Show Code Solution';
+    if (toggleCodeIcon) {
+      toggleCodeIcon.innerHTML = `
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+        <circle cx="12" cy="12" r="3"></circle>`;
+    }
+  }
+
+  if (toggleCodeBtn) {
+    toggleCodeBtn.addEventListener('click', () => {
+      const isHidden = codeWrapper.classList.contains('hidden');
+      if (isHidden) {
+        codeWrapper.classList.remove('hidden');
+        toggleCodeBtn.classList.add('active');
+        toggleCodeText.textContent = 'Hide Code Solution';
+        toggleCodeIcon.innerHTML = `
+          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+          <line x1="1" y1="1" x2="23" y2="23"></line>`;
+        if (window.Prism) Prism.highlightElement(modalCode);
+      } else {
+        resetCodeToggleState();
+      }
+    });
   }
 
   function closeModal() {
