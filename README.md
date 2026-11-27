@@ -69,6 +69,9 @@ Assertion implementations/scenarios
 #### scripting - Basics of Python and Perl 
 Nothing major here yet. :')
 
+#### leetcode - LeetCode & Algorithm Practice
+Solutions to 80+ LeetCode problems organized into 12 patterns: Bit Manipulation, Two Pointers & Binary Search, Arrays & Hashing, Matrix, Linked Lists, Stacks, Design Problems, Dynamic Programming, Strings, Trees, Trie, and Backtracking. No code is embedded here — click any link in the [leetcode/README.md](leetcode/README.md) to view the solution directly on GitHub.
+
 ---
 
 ## Getting Started

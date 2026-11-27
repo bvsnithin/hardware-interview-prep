@@ -1,6 +1,6 @@
 # SystemVerilog Constraints Interview Problems & Scenarios
 
-SystemVerilog constrained-random verification (CRV) is the cornerstone of modern testbenches. This directory contains **70 interview problems, puzzle solvers, and real-world SoC verification scenarios** covering arrays, matrices, queues, distributions, and protocol rules.
+SystemVerilog constrained-random verification (CRV) is the cornerstone of modern testbenches. This directory contains **90+ interview problems, puzzle solvers, and real-world SoC verification scenarios** covering arrays, matrices, queues, distributions, and protocol rules.
 
 ---
 
@@ -79,6 +79,9 @@ Practical testbench stimulus generation mimicking real architectural blocks:
 | [trailing_zeroes.sv](trailing_zeroes.sv) | Constrain a 32-bit number to have between 5 and 10 trailing binary zeroes (`val[4:0] == 0`, `val[10] != 0`). |
 | [five_set_or_unset.sv](five_set_or_unset.sv) | **NVIDIA Interview Question**: 32-bit variable where either exactly 5 bits are set, or exactly 5 bits are unset. |
 | [three_sum_even.sv](three_sum_even.sv) | Constrain an array such that the sum of any three consecutive elements is always even. |
+| [image_pixel_constraint.sv](image_pixel_constraint.sv) | Constrain a 320×240 16-bit pixel image such that every pixel value is less than the sum of its four neighbors (top, bottom, left, right). |
+| [new_questions/armstrong_number_1.sv](new_questions/armstrong_number_1.sv) | Randomize a number and use `post_randomize()` to check whether it is an Armstrong number (sum of cubes of digits equals the number). |
+| [new_questions/armstrong_number_2.sv](new_questions/armstrong_number_2.sv) | Directly constrain random generation to only produce 3-digit and 4-digit Armstrong numbers. |
 
 ---
 
@@ -99,6 +102,7 @@ Practical testbench stimulus generation mimicking real architectural blocks:
 | [patterns/pattern_1.sv](patterns/pattern_1.sv) | Generate periodic sequence pattern `1, 2, 2, 1, 2, 2, 1, 2, 2...` |
 | [patterns/pattern_2.sv](patterns/pattern_2.sv) | Generate repeating ascending cycles `1, 2, 3, 4, 5, 1, 2, 3, 4, 5...` |
 | [patterns/pattern_3.sv](patterns/pattern_3.sv) | Generate escalating zero-padded sequence: `0, 1, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 0, 4, ...` |
+| [patterns/pattern_4.sv](patterns/pattern_4.sv) | Generate repeating digit-stacking pattern: `1, 11, 111, 1111, ...` for a parameterized depth $N$. |
 
 ---
 
@@ -127,6 +131,9 @@ Practical testbench stimulus generation mimicking real architectural blocks:
 | [random_odd_matrix_gen.sv](random_odd_matrix_gen.sv) | Randomize an $N \times N$ matrix where $N$ is strictly odd and entries follow alternating odd/even row rules. |
 | [new_questions/odd_parity.sv](new_questions/odd_parity.sv) | Function and constraint generating 8-bit values with odd parity without repeats. |
 | [new_questions/xor_parity.sv](new_questions/xor_parity.sv) | Compute and constrain XOR parity across variable bit slices. |
+| [deck_of_cards.sv](deck_of_cards.sv) | Randomize a standard 52-card deck using suit and rank enumerations with unique card constraints across the full deck. |
+| [langford_pairing.sv](langford_pairing.sv) | Solve the Langford pairing puzzle: arrange two copies of each integer 1–$N$ in a sequence such that there are exactly $k$ numbers between the two $k$'s. |
+| [unique_last_4_digits.sv](unique_last_4_digits.sv) | Generate an array of 100 random integers where the lower 4 decimal digits of each element are unique across all 100 values. |
 
 ---
 
