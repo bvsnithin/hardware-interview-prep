@@ -831,6 +831,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  text-decoration: none;
   transition: all var(--transition-fast);
 }
 
@@ -1165,6 +1166,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  text-decoration: none;
   transition: all var(--transition-fast);
 }
 

@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── Partition questions by section ──────────────────────────────────────────
   const allQuestions = window.QUESTIONS_DATA || [];
-  const constraintQs = allQuestions.filter(q => !q.category.includes('Fork-Join'));
+  const constraintQs = allQuestions.filter(q => !q.category.includes('Fork-Join') && !q.category.includes('LeetCode'));
   const forkjoinQs   = allQuestions.filter(q =>  q.category.includes('Fork-Join'));
+  const leetcodeQs   = allQuestions.filter(q =>  q.category.includes('LeetCode'));
 
   // ─── Persisted state ─────────────────────────────────────────────────────────
   let completedSet = new Set();
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const sectionConstraintsBtn = document.getElementById('sectionConstraints');
   const sectionForkJoinBtn    = document.getElementById('sectionForkJoin');
+  const sectionLeetcodeBtn    = document.getElementById('sectionLeetcode');
 
   function setSection(section) {
     activeSection = section;
@@ -48,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sectionConstraintsBtn.classList.toggle('active', section === 'constraints');
     sectionForkJoinBtn.classList.toggle('active', section === 'forkjoin');
+    sectionLeetcodeBtn.classList.toggle('active', section === 'leetcode');
 
     // Update hero text
     const heroTitle    = document.getElementById('heroTitle');
@@ -55,9 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (section === 'constraints') {
       heroTitle.textContent    = 'SV Constraints';
       heroSubtitle.textContent = 'Practice real-world constraint programming questions, Intel/NVIDIA interview scenarios, and puzzle solvers. Mark questions complete as you solve them.';
-    } else {
+    } else if (section === 'forkjoin') {
       heroTitle.textContent    = 'Fork-Join Concurrency';
       heroSubtitle.textContent = 'Master concurrency brainteasers, multi-threading synchronisation, semaphore barriers, and process dependency graphs in SystemVerilog.';
+    } else {
+      heroTitle.textContent    = 'LeetCode';
+      heroSubtitle.textContent = 'Algorithmic problem solving for hardware engineers. Click any problem to open the solution on GitHub. Track your progress as you go.';
     }
 
     // Reset filter pills to "all"
@@ -72,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sectionConstraintsBtn.addEventListener('click', () => setSection('constraints'));
   sectionForkJoinBtn.addEventListener('click',    () => setSection('forkjoin'));
+  sectionLeetcodeBtn.addEventListener('click',    () => setSection('leetcode'));
 
   // ─── UI reactive state ────────────────────────────────────────────────────────
   let currentFilter = 'all';
@@ -109,7 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── Helper: active question pool ────────────────────────────────────────────
   function activePool() {
-    return activeSection === 'constraints' ? constraintQs : forkjoinQs;
+    if (activeSection === 'forkjoin')  return forkjoinQs;
+    if (activeSection === 'leetcode')  return leetcodeQs;
+    return constraintQs;
   }
 
   // ─── Persist ─────────────────────────────────────────────────────────────────
@@ -148,8 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update section tab counts
     const constraintsCountEl = document.getElementById('constraintsCount');
     const forkjoinCountEl    = document.getElementById('forkjoinCount');
+    const leetcodeCountEl    = document.getElementById('leetcodeCount');
     if (constraintsCountEl) constraintsCountEl.textContent = constraintQs.length;
     if (forkjoinCountEl)    forkjoinCountEl.textContent    = forkjoinQs.length;
+    if (leetcodeCountEl)    leetcodeCountEl.textContent    = leetcodeQs.length;
 
     // Update top nav badge = total across both
     const navBadge = document.querySelector('#navCodingTab .nav-tab-badge');
@@ -252,6 +263,22 @@ document.addEventListener('DOMContentLoaded', () => {
   function rowHTML(q) {
     const checked = completedSet.has(q.id);
     const tagsHtml = q.tags.map(t => tagBadge(t)).join('');
+    const isLeetcode = q.category.includes('LeetCode');
+    const actionBtn = isLeetcode
+      ? `<a class="view-code-btn" href="${q.githubUrl}" target="_blank" rel="noopener noreferrer" data-id="${q.id}">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          Solution
+        </a>`
+      : `<button class="view-code-btn" data-id="${q.id}">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Code
+        </button>`;
 
     return `
       <tr class="question-row ${checked ? 'completed' : ''}" data-id="${q.id}">
@@ -266,19 +293,12 @@ document.addEventListener('DOMContentLoaded', () => {
           </label>
         </td>
         <td class="cell-title">
-          <div class="question-title-wrap" data-id="${q.id}">
+          <div class="question-title-wrap" ${isLeetcode ? '' : `data-id="${q.id}"`}>
             <span class="question-title">${q.title}</span>
           </div>
         </td>
         <td class="cell-tags">${tagsHtml}</td>
-        <td class="cell-actions">
-          <button class="view-code-btn" data-id="${q.id}">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-            Code
-          </button>
-        </td>
+        <td class="cell-actions">${actionBtn}</td>
       </tr>`;
   }
 
@@ -303,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    document.querySelectorAll('.question-title-wrap, .view-code-btn').forEach(btn => {
+    document.querySelectorAll('.question-title-wrap[data-id], button.view-code-btn').forEach(btn => {
       btn.addEventListener('click', () => openModal(btn.dataset.id));
     });
   }
@@ -535,6 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = hash.replace('#q=', '');
     // Switch to the right section first
     if (forkjoinQs.some(q => q.id === id))    setSection('forkjoin');
+    else if (leetcodeQs.some(q => q.id === id)) setSection('leetcode');
     else if (constraintQs.some(q => q.id === id)) setSection('constraints');
     if (allQuestions.some(q => q.id === id)) openModal(id);
   }
