@@ -762,6 +762,10 @@ body {
   color: var(--accent-cyan);
 }
 
+.question-title-link:hover {
+  text-decoration: underline;
+}
+
 .cell-tags {
   padding: 12px 12px;
   text-align: right;

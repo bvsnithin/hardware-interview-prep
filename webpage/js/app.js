@@ -294,7 +294,9 @@ document.addEventListener('DOMContentLoaded', () => {
         </td>
         <td class="cell-title">
           <div class="question-title-wrap" ${isLeetcode ? '' : `data-id="${q.id}"`}>
-            <span class="question-title">${q.title}</span>
+            ${isLeetcode && q.leetcodeUrl
+              ? `<a class="question-title question-title-link" href="${q.leetcodeUrl}" target="_blank" rel="noopener noreferrer">${q.title}</a>`
+              : `<span class="question-title">${q.title}</span>`}
           </div>
         </td>
         <td class="cell-tags">${tagsHtml}</td>
